@@ -1,4 +1,6 @@
-from models.library import my_library
+from __future__ import annotations
+from models.library import my_library, Book, Reader
+
 
 routes = [
     {
@@ -9,11 +11,11 @@ routes = [
     {
         "method": "POST",
         "path": "/v1/library/add/book",
-        "call": my_library.addBook()
+        "call": my_library.addBook(Book('Name','Name','2'))
     },
     {
         "method": "DELETE",
         "path": "/v1/library/del/book",
-        "call": my_library.deleteBook()
+        "call": my_library.deleteBook(Book('','',''))
     },
 ]
