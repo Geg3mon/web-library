@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-
 class Book:
     title: str = None  # Book title
     genre: str = None  # Book genre
@@ -12,7 +9,7 @@ class Book:
         self.author = author
 
     def __str__(self):
-        return f'{{ "Title": "{self.title}", "Genre": "{self.genre}", "Author": "{self.author}" }}'
+        return f'Title: {self.title}, genre: {self.genre}, author: {self.author}.'
 
     def __eq__(self, other):
         return (self.genre == other.genre and
@@ -101,11 +98,8 @@ class Library():
         return f'You add new book: {book.title}'
 
     def deleteBook(self, book: Book):
-        try:
-            self.library_books.remove(book)
-            return f'You remove book: {book.title}'
-        except:
-            pass
+        self.library_books.remove(book)
+        return f'You remove book: {book.title}'
 
     def addReader(self, reader: Reader):
         if reader.number in self.library_numbers:
@@ -140,13 +134,7 @@ class Library():
     def __str__(self):
         return f'Books: {", ".join(map(str, self.library_books))}\nReaders: {", ".join(map(str, self.library_readers))}'
 
-my_library = Library('Ukraine', '3700',
-                     [
-                         Book('1111', 'BOOK 1', '1'),
-                         Book('2222', 'BOOK 2', '2')
-                     ],
-                     [
-                     ])
+my_library = Library('Ukraine', '3700', [], [])
 
 # if __name__ == '__main__':
 #     book1 = Book('1111', 'BOOK 1', '1')
@@ -167,5 +155,4 @@ my_library = Library('Ukraine', '3700',
 #     print(a.whatRead())
 #     print(reader2.booksy)
 #     print(a.library_books_list())
-#     print(a.addBook(Book('Name','1','2')))
-#     print(a.library_books_list())
+    
